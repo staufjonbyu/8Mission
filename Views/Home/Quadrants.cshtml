@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var x in ViewBag.Quadrant1)
+                    @foreach (Tasks x in ViewBag.Quadrant1)
                     {
                     <tr>
                         <td>@x.Task_Name</td>
@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var x in ViewBag.Quadrant2)
+                    @foreach (Tasks x in ViewBag.Quadrant2)
                     {
                     <tr>
                         <td>@x.Task_Name</td>
@@ -76,6 +76,7 @@
             <h6>Not Important</h6>
         </div>
         <div class="col-5 border" style="text-align: center;">
+            <h6>Quadrant 3</h6>
             <table class="table table-bordered">
                 <thead class="font-weight-bold">
                     <tr>
@@ -86,7 +87,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var x in ViewBag.Quadrant3)
+                    @foreach (Tasks x in ViewBag.Quadrant3)
                     {
                     <tr>
                         <td>@x.Task_Name</td>
@@ -112,7 +113,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var x in ViewBag.Quadrant4)
+                    @foreach (Tasks x in ViewBag.Quadrant4)
                     {
                     <tr>
                         <td>@x.Task_Name</td>

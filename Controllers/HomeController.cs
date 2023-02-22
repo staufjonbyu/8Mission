@@ -38,25 +38,25 @@ namespace _8Mission.Controllers
 
             ViewBag.Quadrant1 =  _db.tasks
                                     .Include(x => x.Category)
-                                    .Where(x => x.Quadrant == 1)
+                                    .Where(x => x.Quadrant == 1 && x.Completed == false)
                                     .OrderBy(x => x.Task_Name)
                                     .ToList();
 
             ViewBag.Quadrant2 = _db.tasks
                                     .Include(x => x.Category)
-                                    .Where(x => x.Quadrant == 2)
+                                    .Where(x => x.Quadrant == 2 && x.Completed == false)
                                     .OrderBy(x => x.Task_Name)
                                     .ToList();
 
             ViewBag.Quadrant3 = _db.tasks
                                     .Include(x => x.Category)
-                                    .Where(x => x.Quadrant == 3)
+                                    .Where(x => x.Quadrant == 3 && x.Completed == false)
                                     .OrderBy(x => x.Task_Name)
                                     .ToList();
 
             ViewBag.Quadrant4 = _db.tasks
                                     .Include(x => x.Category)
-                                    .Where(x => x.Quadrant == 4)
+                                    .Where(x => x.Quadrant == 4 && x.Completed == false)
                                     .OrderBy(x => x.Task_Name)
                                     .ToList();
 
@@ -82,7 +82,7 @@ namespace _8Mission.Controllers
                     .Include(x => x.Category)
                     .OrderBy(x => x.Task_Name)
                     .ToList();
-                return View("Quadrants");
+                return RedirectToAction("Quadrants");
             }
 
             else //if invalid, redirect to MovieForm Get Method
