@@ -18,7 +18,7 @@
 
         <label asp-for="Quadrant">Quadrant:</label>
         <select asp-for="Quadrant">
-            <option disabled></option>
+            <option disabled selected></option>
             @for (int i = 1; i <= 4; i++)
             {
                 <option value="@i">@i</option>
@@ -27,7 +27,7 @@
         <br />
         <label asp-for="CategoryID">Category:</label>
         <select asp-for="CategoryID">
-            <option disabled></option>
+            <option disabled selected></option>
             @foreach (Category c in ViewBag.Category)
             {
                 <option value="@c.CategoryID">@c.Category_Name</option>
