@@ -5,4 +5,8 @@
     <RootNamespace>_8Mission</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Home\Add.cshtml" />
+    <Content Remove="Views\Home\Delete.cshtml" />
+  </ItemGroup>
 </Project>
