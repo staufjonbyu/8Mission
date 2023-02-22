@@ -36,12 +36,31 @@ namespace _8Mission.Controllers
         public IActionResult Quadrants()
         {
 
-            var data = _db.tasks
-                .Include(x => x.Category)
-                .OrderBy(x => x.Task_Name)
-                .ToList();
+            ViewBag.Quadrant1 =  _db.tasks
+                                    .Include(x => x.Category)
+                                    .Where(x => x.Quadrant == 1)
+                                    .OrderBy(x => x.Task_Name)
+                                    .ToList();
 
-            return View(data);
+            ViewBag.Quadrant2 = _db.tasks
+                                    .Include(x => x.Category)
+                                    .Where(x => x.Quadrant == 2)
+                                    .OrderBy(x => x.Task_Name)
+                                    .ToList();
+
+            ViewBag.Quadrant3 = _db.tasks
+                                    .Include(x => x.Category)
+                                    .Where(x => x.Quadrant == 3)
+                                    .OrderBy(x => x.Task_Name)
+                                    .ToList();
+
+            ViewBag.Quadrant4 = _db.tasks
+                                    .Include(x => x.Category)
+                                    .Where(x => x.Quadrant == 4)
+                                    .OrderBy(x => x.Task_Name)
+                                    .ToList();
+
+            return View();
         }
 
         [HttpGet]
@@ -63,7 +82,7 @@ namespace _8Mission.Controllers
                     .Include(x => x.Category)
                     .OrderBy(x => x.Task_Name)
                     .ToList();
-                return View("Quadrants", data);
+                return View("Quadrants");
             }
 
             else //if invalid, redirect to MovieForm Get Method

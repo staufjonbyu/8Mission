@@ -13,14 +13,21 @@
         <input asp-for="Task_Name" />
         <br />
         <label asp-for="Due_Date">Due Date:</label>
-        <input asp-for="Due_Date" />
+        <input type="date" asp-for="Due_Date" />
         <br />
 
         <label asp-for="Quadrant">Quadrant:</label>
-        <input asp-for="Quadrant" />
+        <select asp-for="Quadrant">
+            <option disabled></option>
+            @for (int i = 1; i <= 4; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
         <br />
         <label asp-for="CategoryID">Category:</label>
         <select asp-for="CategoryID">
+            <option disabled></option>
             @foreach (Category c in ViewBag.Category)
             {
                 <option value="@c.CategoryID">@c.Category_Name</option>
@@ -32,8 +39,8 @@
 
         <label asp-for="Completed">Completed:</label>
         <select>
-            <option value="True">Yes</option>
-            <option value="False">No</option>
+            <option value="True">No</option>
+            <option value="False">Yes</option>
         </select>
         <br />
         <button type="submit">Submit</button>
