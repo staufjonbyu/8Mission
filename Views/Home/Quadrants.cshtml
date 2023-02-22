@@ -1,63 +1,46 @@
-﻿@{
-    ViewData["Title"] = "Task Quadrants";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add";
 }
+@model _8Mission.Models.Tasks
 
-<div class="container">
-    <div class="row">
-        <div class="col-2 border">
-            
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Urgent</h6>
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Not Urgent</h6>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 border" style="writing-mode: vertical-lr; transform: rotate(180deg); text-align: center;">
-            <h6>Important</h6>
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Quadrant 1</h6>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Quadrant 2</h6>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 border" style="writing-mode: vertical-lr; transform: rotate(180deg); text-align:center;">
-            <h6>Not Important</h6>
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Quadrant 3</h6>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
-        </div>
-        <div class="col-5 border" style="text-align: center;">
-            <h6>Quadrant 4</h6>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
-        </div>
-    </div>
+<div>
+    <form method="Post">
+        <div asp-validation-summary="All"></div>
+        <label asp-for="Task_Name">Task:</label>
+        <input asp-for="Task_Name" />
+        <br />
+        <label asp-for="Due_Date">Due Date:</label>
+        <input asp-for="Due_Date" />
+        <br />
+
+        <label asp-for="Quadrant">Quadrant:</label>
+        <select>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+
+        </select>
+        <label asp-for="CategoryID">Category:</label>
+        <select asp-for="CategoryID">
+            @foreach (Category c in ViewBag.Category)
+            {
+                <option value="@c.CategoryID">@c.Category_Name</option>
+            }
+
+        </select>
+
+        <br />
+
+        <label asp-for="Completed">Completed:</label>
+        <select>
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
+        <br />
+        <button type="submit">Submit</button>
+    </form>
 </div>
