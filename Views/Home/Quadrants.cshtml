@@ -33,11 +33,13 @@
                 <tbody>
                     @foreach (var x in ViewBag.Quadrant1)
                     {
-                        <tr>
-                            <td>@x.Task_Name</td>
-                            <td>@x.Due_Date</td>
-                            <td>@x.Category.Category_Name</td>
-                        </tr>
+                    <tr>
+                        <td>@x.Task_Name</td>
+                        <td>@x.Due_Date</td>
+                        <td>@x.Category.Category_Name</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
+                    </tr>
 
                     }
                 </tbody>
@@ -60,6 +62,8 @@
                         <td>@x.Task_Name</td>
                         <td>@x.Due_Date</td>
                         <td>@x.Category.Category_Name</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
                     </tr>
 
                     }
@@ -84,11 +88,13 @@
                 <tbody>
                     @foreach (var x in ViewBag.Quadrant3)
                     {
-                        <tr>
-                            <td>@x.Task_Name</td>
-                            <td>@x.Due_Date</td>
-                            <td>@x.Category.Category_Name</td>
-                        </tr>
+                    <tr>
+                        <td>@x.Task_Name</td>
+                        <td>@x.Due_Date</td>
+                        <td>@x.Category.Category_Name</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
+                    </tr>
 
                     }
                 </tbody>
@@ -112,6 +118,8 @@
                         <td>@x.Task_Name</td>
                         <td>@x.Due_Date</td>
                         <td>@x.Category.Category_Name</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a></td>
                     </tr>
                     
                     }
