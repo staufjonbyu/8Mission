@@ -1,5 +1,6 @@
 ﻿using _8Mission.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace _8Mission.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private Context _db;
+        private TaskContext _db;
 
-        public HomeController(ILogger<HomeController> logger, Context db)
+        public HomeController(ILogger<HomeController> logger, TaskContext db)
         {
             _logger = logger;
 
@@ -35,9 +36,9 @@ namespace _8Mission.Controllers
         public IActionResult Quadrants()
         {
 
-            var data = _db.Tasks
+            var data = _db.tasks
                 .Include(x => x.Category)
-                .OrderBy(x => x.title)
+                .OrderBy(x => x.Task_Name)
                 .ToList();
 
             return View(data);
@@ -46,7 +47,7 @@ namespace _8Mission.Controllers
         [HttpGet]
         public IActionResult TaskForm() //empty form
         {
-            ViewBag.Category = _db.Category.ToList();
+            ViewBag.Category = _db.categories.ToList();
 
             return View();
         }
@@ -58,9 +59,9 @@ namespace _8Mission.Controllers
             {
                 _db.Add(task);
                 _db.SaveChanges();
-                var data = _db.Tasks
+                var data = _db.tasks
                     .Include(x => x.Category)
-                    .OrderBy(x => x.title)
+                    .OrderBy(x => x.Task_Name)
                     .ToList();
                 return View("Quadrants", data);
             }
@@ -68,7 +69,7 @@ namespace _8Mission.Controllers
             else //if invalid, redirect to MovieForm Get Method
             {
 
-                ViewBag.Category = _db.Category.ToList();
+                ViewBag.Category = _db.categories.ToList();
 
                 return View();
             }
@@ -77,9 +78,9 @@ namespace _8Mission.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var task = _db.Tasks.FirstOrDefault(x => x.taskId == id);
+            var task = _db.tasks.FirstOrDefault(x => x.TaskID == id);
 
-            ViewBag.Category = _db.Category.ToList();
+            ViewBag.Category = _db.categories.ToList();
 
             return View("TaskForm", task); //redircts to form view but gives it data to auto-fill
         }
@@ -88,7 +89,7 @@ namespace _8Mission.Controllers
         [HttpPost]
         public IActionResult Edit(Tasks t)
         {
-            var task = _db.Tasks.FirstOrDefault(x => x.taskId == t.taskId);
+            var task = _db.tasks.FirstOrDefault(x => x.TaskID == t.TaskID);
             if (task == null)
             {
                 return NotFound();
@@ -101,7 +102,7 @@ namespace _8Mission.Controllers
             task.CategoryID = t.CategoryID;
             
 
-            _db.Tasks.Update(task);
+            _db.tasks.Update(task);
             _db.SaveChanges();
 
             return RedirectToAction("Quadrants");
@@ -110,9 +111,9 @@ namespace _8Mission.Controllers
 
         public IActionResult Delete(int id)
         {
-            var task = _db.Tasks.FirstOrDefault(x => x.taskId == id);
+            var task = _db.tasks.FirstOrDefault(x => x.TaskID == id);
 
-            _db.Movies.Remove(task);
+            _db.tasks.Remove(task);
 
             _db.SaveChanges();
 
