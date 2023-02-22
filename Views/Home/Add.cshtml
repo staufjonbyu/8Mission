@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add";
+}
+@model _8Mission.Models.Tasks
+
+<div>
+    <form method="Post">
+        <div asp-validation-summary="All"></div>
+        <label asp-for="Task">Task:</label>
+        <input asp-for="Task" />
+        <br />
+        <label asp-for="DueDate">Due Date:</label>
+        <input asp-for="DueDate" />
+        <br />
+
+        <label asp-for="Quadrant">Quadrant:</label>
+        <input asp-for="Quadrant" />
+        <br />
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+
+        </select>
+
+        <br />
+
+        <label asp-for="Completed">Completed:</label>
+        <select>
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+</div>
