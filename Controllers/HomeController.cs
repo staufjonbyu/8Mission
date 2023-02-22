@@ -34,6 +34,7 @@ namespace _8Mission.Controllers
 
         public IActionResult Quadrants()
         {
+
             var data = _db.Tasks
                 .Include(x => x.Category)
                 .OrderBy(x => x.title)
@@ -117,6 +118,7 @@ namespace _8Mission.Controllers
 
             return RedirectToAction("Quadrants");
         }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
