@@ -8,6 +8,7 @@
 
 <div>
     <form method="Post">
+        <input type="hidden" asp-for="TaskID"/>
         <div asp-validation-summary="All"></div>
         <label asp-for="Task_Name">Task:</label>
         <input asp-for="Task_Name" />

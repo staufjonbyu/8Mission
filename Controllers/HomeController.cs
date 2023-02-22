@@ -68,7 +68,7 @@ namespace _8Mission.Controllers
         {
             ViewBag.Category = _db.categories.ToList();
 
-            return View();
+            return View(new Tasks());
         }
 
         [HttpPost]
